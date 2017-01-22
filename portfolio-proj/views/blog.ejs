@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>blog</title>
+  <script src="https://use.fontawesome.com/e40d4a8511.js"></script>
+
+</head>
+<body style="background-image: url(https://www.sajan.com/wp-content/uploads/2014/09/localization-blog-background.jpg);">
+  <h1 style="text-align: center;">
+    <a style="text-decoration: none; color: black; text-align: center;" href = "/portfolio"> Projects </a>
+    <a href="/portfolio/blogs" target="_click" style="text-decoration: none; color: black; text-align: center;"> | Blogs</a> 
+  </h1>
+  <ul>
+    <% for (var i = data.length-1 ; i>= 0; i--) {%>
+    <li style="list-style-type: none;">
+      <blockquote style="float: left; border-radius: 60px; background-image: url(http://s8.favim.com/flow/150930/background-blue-dark-blue-dark-pink-Favim.com-3383708.jpg); background-size: cover; width: 360px; height: 180px; margin-left: 0;">
+        <p style="text-shadow: 1px 1px black; text-transform: capitalize; margin-left: 90px; font-size: 28px; color: black;">Title: <%= data[i].title %></p>
+        <p style="margin-left: 40px; font-size: 20px; margin-top: -8%; color: black; text-shadow: 1px 1px black;"><%= data[i].message %></p></blockquote>
+        <a style=" float: left;" href=<%="delete/blog/"+data[i].id%>><i style=" float: left; color: black; " class="fa fa-trash fa-1x" aria-hidden="true"></i></a> 
+        <% } %>
+        
+      </li>
+
+    </ul>
+
+    <form action="/portfolio/blogs" method="post" style="clear: left;">
+      <div style="clear: left; padding: 1%;"><input type="text" name="title" placeholder="Title" style = "height: 50px; width: 100px; font-size: 32px; background-color: transparent;"></div>
+      <div style="padding: 1%;"><textarea type="text" name="message" placeholder="enter your text" style="height:200px; width: 400px; font-size:32px; background-color: transparent;"></textarea></div>
+      <div style="padding: 1%;"><input style="background-image: url(http://s8.favim.com/flow/150930/background-blue-dark-blue-dark-pink-Favim.com-3383708.jpg); text-shadow: 1px 1px black; font-size: 16px;" type="submit" value="submit"></div>
+
+    </form>
+
+
+  </body>
+  </html>
