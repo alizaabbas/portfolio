@@ -16,7 +16,7 @@
   <ul>
     <% for (var i = data.length-1 ; i>= 0; i--) {%>
     <li style="list-style-type: none;">
-      <blockquote style="float: left; border-radius: 60px; background-image: url(http://s8.favim.com/flow/150930/background-blue-dark-blue-dark-pink-Favim.com-3383708.jpg); background-size: cover; width: 360px; height: 180px; margin-left: 0;">
+      <blockquote style="float: left; border-radius: 60px; background-image: url(http://s8.favim.com/flow/150930/background-blue-dark-blue-dark-pink-Favim.com-3383708.jpg); background-size: cover; width: 360px; height: 180px; margin-left: 0;"> <!--margin-left: 0;-->
         <p style="text-shadow: 1px 1px black; text-transform: capitalize; margin-left: 90px; font-size: 28px; color: black;">Title: <%= data[i].title %></p>
         <p style="margin-left: 40px; font-size: 20px; margin-top: -8%; color: black; text-shadow: 1px 1px black;"><%= data[i].message %></p></blockquote>
         <a style=" float: left;" href=<%="delete/blog/"+data[i].id%>><i style=" float: left; color: black; " class="fa fa-trash fa-1x" aria-hidden="true"></i></a> 
@@ -30,9 +30,13 @@
       <div style="clear: left; padding: 1%;"><input type="text" name="title" placeholder="Title" style = "height: 50px; width: 100px; font-size: 32px; background-color: transparent;"></div>
       <div style="padding: 1%;"><textarea type="text" name="message" placeholder="enter your text" style="height:200px; width: 400px; font-size:32px; background-color: transparent;"></textarea></div>
       <div style="padding: 1%;"><input style="background-image: url(http://s8.favim.com/flow/150930/background-blue-dark-blue-dark-pink-Favim.com-3383708.jpg); text-shadow: 1px 1px black; font-size: 16px;" type="submit" value="submit"></div>
+      <p id = "date"></p> 
 
     </form>
-
+<script>
+  var d = new Date();
+document.getElementById('date').innerHTML = d;
+</script>
 
   </body>
   </html>

@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine' , 'ejs');
 app.set('views' , './views');
+app.use(express.static('style'));
 var connectionString = 'postgres://' + process.env.POSTGRES_USER + ':' + process.env.POSTGRES_PASSWORD + '@localhost/portfolio';
 // loads portfolio page
 app.get('/portfolio' , function(req, res){
