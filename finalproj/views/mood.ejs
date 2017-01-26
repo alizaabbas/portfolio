@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>portfolio</title>
+  <script src="https://use.fontawesome.com/e40d4a8511.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        margin: 0 auto;
+        margin-top: 50px;
+        height: 65%;
+        width: 60%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+
+        z-index: 5;
+        background-color:transparent;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        
+      }
+      #floating-panel {
+        margin-left: -40px;
+      }
+    </style>
+
+
+  </head>
+  <body style="background: linear-gradient(rgba(202, 17, 137, 0.96), rgba(23, 181, 145, 0.741176)) fixed;">
+
+    <h1 style="text-align: center; ">SELECT YOUR CURRENT MOOD...</h1>
+    <ul>
+      <li style="list-style: none; text-align: center; font-size: 32px; font-weight: bold;">
+        <a id = "happy" href="#" style="text-decoration: none; padding: 10px; color: black;">Happy</a>
+        <a id = "sad" href="/moodsad"  style="text-decoration: none; padding: 10px; color: black;">Feeling Blue</a>
+        <a id = "angry" href="/moodAngry" style="text-decoration: none; padding: 10px; color: black;">Angry</a>
+      </li>
+
+    </ul>
+    <div id = "status" style="text-align: center; font-size: 30px; font-weight: bold; padding-top: 50px;"></div>
+
+
+    <!--<div id="floating-panel">
+      <input type="button" value="Toggle Street View" onclick="toggleStreetView();"></input>
+    </div>-->
+    <div id="map"></div>
+    
+    <script>
+      
+
+      var panorama;
+
+      function initMap() {
+        var flushing  = { lat: 40.768452 , lng:   -73.832764};
+        var citifield = {lat: 40.75416365 , lng: -73.84082997};
+        var centralPark = {lat: 40.771133 , lng: -73.974187};
+        var timesquare = {lat: 40.758896, lng: -73.985130};
+        var infowindow = new google.maps.InfoWindow({
+          content: "hey people"
+        });
+        // Set up the map
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: flushing,
+          zoom: 10,
+          streetViewControl: false
+        });
+        // markers to show when user clicks happy
+        document.getElementById('happy').addEventListener("click", function(){
+        // Set up the markers on the map
+        var citiMarker = new google.maps.Marker({
+          position: citifield,
+          map: map,
+          title: 'citi'
+
+        });
+        
+        var CentralMarker = new google.maps.Marker({
+          position: centralPark,
+          map: map,
+          title: 'central'
+
+        });
+        var timesMarker = new google.maps.Marker({
+          position: timesquare,
+          map: map,
+          title: 'times'
+        });
+        google.maps.event.addListener(citiMarker, 'click', function() {
+            // do something with this marker ...
+            infowindow.setContent('<p style = "font-family: arial;"><strong>Citi Field</strong> is a stadium located in Flushing Meadows–Corona Park in the New York City borough of Queens. </p> <div style = "height:180px; width: 100%;"><img style = "width: inherit; height: inherit;" src = "https://upload.wikimedia.org/wikipedia/commons/4/48/Le_Citi_Field.jpg"></div><a href ="https://www.google.com/maps/dir//Citi+Field,+123-01+Roosevelt+Ave,+Queens,+NY+11368/@40.7452891,-73.8509507,12z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89c25fe0b147d195:0xf55b95d4f099763b!2m2!1d-73.8458213!2d40.7570877!3e0" target = "_blank">click the link to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'citi'){
+             infowindow.open(map, citiMarker);
+           }
+
+         });
+
+        google.maps.event.addListener(timesMarker, 'click', function() {
+            // do something with this marker ...
+            infowindow.setContent('<p style = "font-family: arial;"><strong>Times Square</strong> is America’s town square. People have long flocked to the district to watch election night results unfold, follow sporting events on the electronic tickers, attend Broadway productions and (of course) celebrate the New Year’s Eve ball drop.</p> <div style = "height:180px; width: 100%;"><img style = "width: inherit; height: inherit;" src = "http://blog.gotobus.com/wp-content/uploads/2016/11/rsz_istock_000051912656_full-1-1024x682.jpg"></div><a href ="https://www.google.com/maps/dir//Times+Square,+Manhattan,+NY/@40.7588738,-74.0551709,12z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x89c25855c6480299:0x55194ec5a1ae072e!2m2!1d-73.985131!2d40.758895" target = "_blank">click the link to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'times'){
+             infowindow.open(map, timesMarker);
+           }
+
+         });
+
+        google.maps.event.addListener(CentralMarker, 'click', function() {
+            // do something with this marker ...
+            infowindow.setContent('<p style = "font-family: arial;"><strong>Central Park</strong> is an urban park in Manhattan, New York City. Central Park is the most visited urban park in the United States</p><div style = "height:180px; width: 100%;"><img style = "width: inherit; height: inherit;" src = "https://upload.wikimedia.org/wikipedia/commons/0/05/Southwest_corner_of_Central_Park%2C_looking_east%2C_NYC.jpg"></div><a href ="https://www.google.com/maps/dir//Central+Park,+New+York,+NY/@40.783434,-73.964381,3a,75y,90t/data=!3m8!1e2!3m6!1s53466368!2e1!3e10!6s%2F%2Flh4.googleusercontent.com%2Fproxy%2FUJ9bPFrX-Fr_8wDM86tONry78R3Xd_EQviK2dkWwum2IrX5u_ZnDIR16rNlFKD73_lmnq8ClZgID_QMrjZCpEUzpT8cH_Q%3Dw203-h135!7i1134!8i756!4m9!4m8!1m0!1m5!1m1!1s0x89c2589a018531e3:0xb9df1f7387a94119!2m2!1d-73.9653551!2d40.7828647!3e0" target = "_blank">click the link to get directions</a>')
+            console.log(this.getTitle());
+            if(this.getTitle() === 'central'){
+             infowindow.open(map, CentralMarker);
+
+           }
+
+         });
+        
+      });
+        // We get the map's default panorama and set up some defaults.
+        // Note that we don't yet set it visible.
+        panorama = map.getStreetView();
+        panorama.setPosition(flushing);
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+          heading: 265,
+          pitch: 0
+        }));
+
+      }
+/*
+      function toggleStreetView() {
+        var toggle = panorama.getVisible();
+        if (toggle == false) {
+          panorama.setVisible(true);
+        } else {
+          panorama.setVisible(false);
+        }
+      }
+      */
+      
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo7DWDHU6hppNH69t5XWUVSC_U8XxsP-U&callback=initMap">
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>portfolio</title>
+  <script src="https://use.fontawesome.com/e40d4a8511.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        margin: 0 auto;
+        margin-top: 100px;
+        height: 65%;
+        width: 60%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+
+        z-index: 5;
+        background-color:transparent;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        
+      }
+      #floating-panel {
+        margin-left: -40px;
+      }
+    </style>
+
+
+  </head>
+  <body style="background: linear-gradient(rgba(202, 17, 137, 0.96), rgba(23, 181, 145, 0.741176)) fixed;">
+
+    <h1 style="text-align: center; ">SELECT YOUR CURRENT MOOD...</h1>
+    <ul>
+      <li style="list-style: none; text-align: center; font-size: 32px; font-weight: bold;">
+        <a id = "happy" href="/mood"  style="text-decoration: none; padding: 10px; color: black;">Happy</a>
+        <a id = "sad" href="/moodsad"  style="text-decoration: none; padding: 10px; color: black;">Feeling Blue</a>
+        <a id = "angry" href="#" style="text-decoration: none; padding: 10px; color: black;">Angry</a>
+      </li>
+
+    </ul>
+    <div id = "status" style="text-align: center; font-size: 30px; font-weight: bold; padding-top: 50px;"></div>
+
+
+    <!--<div id="floating-panel">
+      <input type="button" value="Toggle Street View" onclick="toggleStreetView();"></input>
+    </div>-->
+    <div id="map"></div>
+    
+    <script>
+      
+
+      var panorama;
+
+      function initMap() {
+        var flushing  = { lat: 40.768452 , lng:   -73.832764};
+        var fabfitness = {lat: 40.6725378 , lng: -73.76446};
+        var spa = {lat: 40.7875319 , lng: -73.8369441};
+        var infowindow = new google.maps.InfoWindow({
+          content: "hey people"
+        });
+        // Set up the map
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: flushing,
+          zoom: 10,
+          streetViewControl: false
+        });
+        // markers to show when user clicks happy
+        document.getElementById('angry').addEventListener("click", function(){
+        // Set up the markers on the map
+        var fabMarker = new google.maps.Marker({
+          position: fabfitness,
+          map: map,
+          title: 'fab'
+
+        });
+        var spaMarker = new google.maps.Marker({
+          position: spa,
+          map: map,
+          title: 'spa'
+
+        });
+        google.maps.event.addListener(fabMarker, 'click', function() {
+            // do something with this marker ...
+            
+            infowindow.setContent('<p>Fabulous Fitness NYC is a great place to stop in for some fun</p><a href = "https://goo.gl/maps/PGj74FnpuVs" target = "_blank" >click to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'fab'){
+             infowindow.open(map, fabMarker);
+
+           }
+
+         });
+        google.maps.event.addListener(spaMarker, 'click', function() {
+            // do something with this marker ...
+            
+            infowindow.setContent('<p><strong>Spa Castle </strong>Multiple purified air dispensers, which distribute filtered oxygen-enriched air, are installed throughout the spa.</p><div style = "height: 180px; width: 100%;"><img style = "height: 180px; width: 100%;" src = "http://ny.spacastleusa.com/wp-content/uploads/2015/09/DSC061841.jpg"> </div><a href = "https://goo.gl/maps/wYYpsy1jQvB2" target = "_blank" >click to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'spa'){
+             infowindow.open(map, spaMarker);
+
+           }
+
+         });
+        
+        
+      });
+        // We get the map's default panorama and set up some defaults.
+        // Note that we don't yet set it visible.
+        panorama = map.getStreetView();
+        panorama.setPosition(flushing);
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+          heading: 265,
+          pitch: 0
+        }));
+
+      }
+/*
+      function toggleStreetView() {
+        var toggle = panorama.getVisible();
+        if (toggle == false) {
+          panorama.setVisible(true);
+        } else {
+          panorama.setVisible(false);
+        }
+      }
+      */
+      
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo7DWDHU6hppNH69t5XWUVSC_U8XxsP-U&callback=initMap">
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>portfolio</title>
+  <script src="https://use.fontawesome.com/e40d4a8511.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+      /* Always set the map height explicitly to define the size of the div
+      * element that contains the map. */
+      #map {
+        margin: 0 auto;
+        margin-top: 90px;
+        height: 65%;
+        width: 60%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+
+        z-index: 5;
+        background-color:transparent;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        
+      }
+      #floating-panel {
+        margin-left: -40px;
+      }
+    </style>
+
+
+  </head>
+  <body style="background: linear-gradient(rgba(202, 17, 137, 0.96), rgba(23, 181, 145, 0.741176)) fixed;">
+
+    <h1 style="text-align: center; ">SELECT YOUR CURRENT MOOD...</h1>
+    <ul>
+      <li style="list-style: none; text-align: center; font-size: 32px; font-weight: bold;">
+        <a id = "happy" href="/mood" style="text-decoration: none; padding: 10px; color: black;">Happy</a>
+        <a id = "sad" href="#" style="text-decoration: none; padding: 10px; color: black;">Feeling Blue</a>
+        <a id ="angry" href="/moodAngry" style="text-decoration: none; padding: 10px; color: black;">Angry</a>
+      </li>
+
+    </ul>
+    
+    <div id = "status" style="text-align: center; font-size: 30px; font-weight: bold; padding-top: 70px;"></div>
+
+
+    <!--<div id="floating-panel">
+      <input type="button" value="Toggle Street View" onclick="toggleStreetView();"></input>
+    </div>-->
+    <div id="map"></div>
+    
+    <script>
+      
+
+      var panorama;
+
+      function initMap() {
+        var flushing  = { lat: 40.768452 , lng:   -73.832764};
+        var theatre = {lat: 40.75892386 , lng: -73.98727387};
+        var bobby = {lat: 40.7198044 , lng: -74.0083762};
+        var infowindow = new google.maps.InfoWindow({
+          content: "hey people"
+        });
+        // Set up the map
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: flushing,
+          zoom: 10,
+          streetViewControl: false
+        });
+        // markers to show when user clicks happy
+        document.getElementById('sad').addEventListener("click", function(){
+        // Set up the markers on the map
+        var theatreMarker = new google.maps.Marker({
+          position: theatre,
+          map: map,
+          title: 'theatre'
+
+        });
+        var bobbyMarker = new google.maps.Marker({
+          position: bobby,
+          map: map,
+          title: 'bobby'
+
+        });
+        google.maps.event.addListener(theatreMarker, 'click', function() {
+            // do something with this marker ...
+            
+            infowindow.setContent('<p>The Imperial Theatre is a Broadway theatre located at 249 West 45th Street in midtown-Manhattan.</p><div style = "height: 180px; width: 100%;"><img style = "height: 180px; width: 100%;" src = "http://www.imperialtheatre.com/spotlights/IMG_1454HDR2lightFor%20Banner%20on%20WEBrent.jpg"> </div><a href = "https://goo.gl/maps/feRKdMGNHqE2" target = "_blank" >click to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'theatre'){
+             infowindow.open(map, theatreMarker);
+
+           }
+
+         });
+        google.maps.event.addListener(bobbyMarker, 'click', function() {
+            // do something with this marker ...
+            
+            infowindow.setContent('<p><strong>Bobbys </strong>Weekend brunch hot spot serving homestyle American eats with many locally sourced ingredients.</p><div style = "height: 180px; width: 100%;"><img style = "height: 180px; width: 100%;" src = "https://s3-media4.fl.yelpcdn.com/bphoto/GSrm_RBrsS4FdPpSInNfCA/ls.jpg"> </div><a href = "https://goo.gl/maps/ps8EEVA5dxE2" target = "_blank" >click to get directions</a>');
+            console.log(this.getTitle());
+            if(this.getTitle() === 'bobby'){
+             infowindow.open(map, bobbyMarker);
+
+           }
+
+         });
+        
+        
+      });
+        // We get the map's default panorama and set up some defaults.
+        // Note that we don't yet set it visible.
+        panorama = map.getStreetView();
+        panorama.setPosition(flushing);
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+          heading: 265,
+          pitch: 0
+        }));
+
+      }
+/*
+      function toggleStreetView() {
+        var toggle = panorama.getVisible();
+        if (toggle == false) {
+          panorama.setVisible(true);
+        } else {
+          panorama.setVisible(false);
+        }
+      }
+      */
+      
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo7DWDHU6hppNH69t5XWUVSC_U8XxsP-U&callback=initMap">
+  </script>
+</body>
+</html>

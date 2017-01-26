@@ -1,0 +1,94 @@
+#portfolioBody{
+	font-family: arial; 
+	background-color: white; 
+	text-align: center; 
+	margin: 0; 
+}
+
+#portfoliobodyDiv{
+	font-weight: bold; 
+	font-family: papyrus,fantasy; 
+	height: 100vh; 
+	background-image: url(http://babalucas.com/wp-content/uploads/babalucas_background_2a.jpg); 
+	background-size: contain; 
+	color: white; 
+	margin-top: 0;
+}
+
+#portfolioh1{
+	text-align: center; 
+	position: relative; 
+	top: 15%; left: 2%; 
+	font-size: 50px; 
+	display: block; 
+	margin-top: 0; 
+}
+
+#portfolioh2{
+	text-align: center; 
+	position: relative; 
+	top: 20%; 
+	left: 2%; 
+	display: block;
+}
+
+#portfolioprojAnchor{
+	text-decoration: none; 
+	color: black; 
+	font-size: 40px;
+	color: white; 
+}
+
+#portmood , #portfolioblogAnchor{
+	text-decoration: none; 
+	color: black; 
+	font-size: 40px; 
+	color: white;"
+}
+
+
+#portfolioIntroDiv{
+	height: 200px;  
+	margin: 0 auto; 
+	position: relative; 
+	top: 30%; 
+	background: linear-gradient(rgb(206, 104, 44), rgba(0, 0, 0, 0.5));
+}
+
+
+#portfolioIntroPara{
+	position: relative; 
+	top: 30px; 
+	font-size: 24px;
+}
+
+#portfolioprojbody{
+	background-image: url(https://josh2brown.files.wordpress.com/2014/12/portfolio-background.jpg); 
+	background-size: cover; 
+	height: 800px; 
+}
+
+#portfolioul{
+	list-style-type: 
+	decimal;text-align: center; 
+	list-style-position: inside;
+}
+
+#portlist1{
+	position: relative; 
+	top: 300px; 
+	margin: 0 auto; 
+}
+
+#portGithub{
+	color: black;
+
+}
+
+#portlDesc{
+	text-align: center;
+}
+
+#portlist2{
+	position: relative; top:320px; left: 0; right: 0;
+}
