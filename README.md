@@ -5,3 +5,7 @@ This file contains portfolio, using postgres database. The first page displays p
 
 
 <https://github.com/alizaabbas/portfolio/tree/master/portfolio-proj>
+
+
+THE FINAL PROJECT HAS PORTFOLIO AND MOOD APP, THAT CHANGES COLOR DEPNDING ON WHAT MOOD YOU CLICK AND PULLS GOOGLE MAPS API TO GET THE LOCATIONS A PERSON CAN GO FOR THAT PARTICULAR MOOD!
+LINK: <https://github.com/alizaabbas/portfolio/tree/master/finalproj>
